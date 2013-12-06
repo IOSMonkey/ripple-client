@@ -29,12 +29,6 @@ LoginTab.prototype.angular = function (module) {
       return;
     }
 
-    $scope.backendChange = function()
-    {
-      $id.blobBackends = $scope.blobBackendCollection.something.value.split(',');
-      store.set('ripple_blobBackends', $id.blobBackends);
-    };
-
     $scope.error = '';
     $scope.username = '';
     $scope.password = '';
@@ -124,16 +118,14 @@ LoginTab.prototype.angular = function (module) {
 
             $rpTracker.track('Login', {
               'Status': 'error',
-              'Message': err.message,
-              'Blob': $scope.blobBackendCollection.something.name
+              'Message': err.message
             });
 
             return;
           }
 
           $rpTracker.track('Login', {
-            'Status': 'success',
-            'Blob': $scope.blobBackendCollection.something.name
+            'Status': 'success'
           });
 
           $scope.status = '';
